@@ -1,4 +1,4 @@
 OA-project
 ==========
 
-This three weeks I did
+What we did in three weeks
