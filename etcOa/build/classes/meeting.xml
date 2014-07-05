@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "./struts-2.0.dtd">
+<struts>
+<package name="meeting" extends="struts-default" namespace="/">
+ <action name="showMeeting" class="meetingAction" method="showMeeting">
+  				<result>/leader/meetingManage/showMeeting.jsp</result>
+  		  </action>
+  		  
+ <action name="showStaffMeeting" class="meetingAction" method="showStaffMeeting">
+  			<result>/staff/meetingManage/showStaffMeeting.jsp</result>
+  </action>
+  		  
+ <action name="getInfo" class="meetingAction" method="getInfo">
+  				<result>/leader/meetingManage/addMeeting.jsp</result>
+ </action>
+
+ <action name="toUpdateMeeting" class="meetingAction" method="toUpdateMeeting">
+  				<result>/leader/meetingManage/updateMeeting.jsp</result>
+ </action>
+ 
+  <action name="lookUpMeeting" class="meetingAction" method="lookUpMeeting">
+  				<result>/leader/meetingManage/lookUpMeeting.jsp</result>
+ </action>
+ 
+ <action name="addMeeting" method="addMeeting" class="meetingAction">
+  <result type="redirectAction">
+	<param name="actionName">showMeeting</param>	
+	</result>
+	 </action>
+	 
+	 <action name="updateMeeting" method="updateMeeting" class="meetingAction">
+  <result type="redirectAction">
+	<param name="actionName">showMeeting</param>
+	</result>
+	 </action>
+	  <action name="deleteMeeting" method="deleteMeeting" class="meetingAction">
+  <result type="redirectAction">
+	<param name="actionName">showMeeting</param>
+	</result>
+	 </action>
+	 
+	 <!-- lxh -->
+	 <action name="showMroom" class="meetingRoomAction" method="showMroom">
+			<result>/leader/meetingRoom/maintainMeetingRoom.jsp</result>
+		</action>
+		<action name="showToUpdateMroom" class="meetingRoomAction"
+			method="showToUpdateMroom">
+			<result>/leader/meetingRoom/updateMeetingRoom.jsp</result>
+		</action>
+		<action name="showUpdateMroom" class="meetingRoomAction"
+			method="showUpdateMroom">
+			<result type="redirectAction">
+			<param name="actionName">showMroom</param>
+			</result>
+		</action>
+		<action name="showAppointmentMroom" class="meetingRoomAction"
+			method="showAppointmentMroom">
+			<result>/leader/meetingRoom/appointmentMeetingRoom.jsp</result>
+		</action>
+		<action name="showAddMroom" class="meetingRoomAction" method="showAddMroom">
+			<result>/leader/meetingRoom/addMeetingRoom.jsp</result>
+		</action>
+		<action name="showDeleteMroom" class="meetingRoomAction" method="showDeleteMroom">
+			<result type="redirectAction">
+			<param name="actionName">showMroom</param>
+			</result>
+		</action>
+		
+</package>
+</struts>

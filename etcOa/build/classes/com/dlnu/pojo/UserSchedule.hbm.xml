@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-6-26 13:39:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dlnu.pojo.UserSchedule" table="USER_SCHEDULE" schema="OA">
+        <id name="uscheid" type="java.lang.Integer">
+            <column name="USCHEID" precision="22" scale="0" />
+             <generator class="sequence">
+            <param name="sequence">sq14</param>
+            </generator>
+        </id>
+        <many-to-one name="usersByActorid" class="com.dlnu.pojo.Users" fetch="select" lazy="false">
+            <column name="ACTORID" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="usersByPlanid" class="com.dlnu.pojo.Users" fetch="select" lazy="false">
+            <column name="PLANID" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="schedule" class="com.dlnu.pojo.Schedule" fetch="select" lazy="false">
+            <column name="HID" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

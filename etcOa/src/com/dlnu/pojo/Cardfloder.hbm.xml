@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-6-26 13:39:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.dlnu.pojo.Cardfloder" table="CARDFLODER" schema="OA">
+		<id name="cid" type="java.lang.Integer">
+			<column name="CID" precision="22" scale="0" />
+			<generator class="sequence">
+				<param name="sequence">sq2</param>
+			</generator>
+		</id>
+		<many-to-one name="users" class="com.dlnu.pojo.Users"
+			fetch="select" lazy="false">
+			<column name="USERID" precision="22" scale="0" />
+		</many-to-one>
+		<property name="cname" type="string">
+			<column name="CNAME" length="40" not-null="true" />
+		</property>
+		<set name="cards" table="CARD" inverse="true" lazy="false" fetch="select">
+			<key>
+				<column name="CID" precision="22" scale="0" />
+			</key>
+			<one-to-many class="com.dlnu.pojo.Card" />
+		</set>
+	</class>
+</hibernate-mapping>

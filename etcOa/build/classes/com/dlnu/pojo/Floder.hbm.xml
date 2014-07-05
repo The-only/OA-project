@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-6-26 13:39:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dlnu.pojo.Floder" table="FLODER" schema="OA">
+        <id name="fid" type="java.lang.Integer">
+            <column name="FID" precision="22" scale="0" />
+           <generator class="sequence">
+            <param name="sequence">sq5</param>
+            </generator>
+        </id>
+        <many-to-one name="users" class="com.dlnu.pojo.Users" fetch="select" lazy="false">
+            <column name="USERID" precision="22" scale="0" />
+        </many-to-one>
+        <property name="fname" type="string">
+            <column name="FNAME" length="40" not-null="true" />
+        </property>
+        <property name="fatherfid" type="java.lang.Integer">
+            <column name="FATHERFID" precision="22" scale="0" />
+        </property>
+        <set name="fileses" table="FILES" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="FID" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.dlnu.pojo.Files" />
+        </set>
+    </class>
+</hibernate-mapping>

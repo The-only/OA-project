@@ -1,0 +1,93 @@
+.info_main{
+width: 960px;
+margin: 0px auto;
+margin-top: 46px;
+}
+
+p.general_title {
+padding-bottom: 0px;
+background: url(../images/line_6.gif) repeat-x 0px 11px;
+font-size: 19px;
+color: #1a1a1a !important;
+text-transform: uppercase;
+text-align: center;
+line-height: normal !important;
+}
+p.general_title span {
+padding: 0px 8px;
+display: inline-block;
+background-color: #ffffff;
+}
+
+.separator {
+
+clear: both;
+overflow: hidden;
+}
+
+p.general_title {
+padding-bottom: 0px;
+background: url(../images/line_6.gif) repeat-x 0px 11px;
+font-size: 19px;
+color: #1a1a1a !important;
+text-transform: uppercase;
+text-align: center;
+line-height: normal !important;
+}
+p.general_title span {
+padding: 0px 8px;
+display: inline-block;
+background-color: #ffffff;
+}
+
+.separator {
+
+clear: both;
+overflow: hidden;
+}
+.block_registration {
+width: 745px;
+margin: 0px auto 0px;
+}
+
+.block_Info .col_1 {
+width: 378px;
+float: left;
+}
+
+.block_Info .info_name {
+height: 29px;
+float: left;
+}
+
+.block_Info .info_name p {
+font-size: 11px;
+color: #676767;
+line-height: 29px;
+}
+
+.block_Info .info {
+width: 261px;
+
+float: right;
+overflow: hidden;
+position: relative;
+}
+
+
+
+.block_Info .col_2 {
+width: 332px;
+float: right;
+}
+
+
+.block_Info button{
+width: 104px;
+margin: 0px auto;
+float: right;
+}
+
+.modal-body {
+height: 765px;
+}

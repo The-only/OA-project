@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-6-26 13:39:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dlnu.pojo.Mroom" table="MROOM" schema="OA">
+        <id name="mrid" type="java.lang.Integer">
+            <column name="MRID" precision="22" scale="0" />
+             <generator class="sequence">
+            <param name="sequence">sq8</param>
+            </generator>
+        </id>
+        <property name="mname" type="string">
+            <column name="MNAME" length="40" />
+        </property>
+        <property name="mraddress" type="string">
+            <column name="MRADDRESS" length="30" />
+        </property>
+        <property name="mrpeople" type="java.lang.Integer">
+            <column name="MRPEOPLE" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="mracondition" type="java.lang.Integer">
+            <column name="MRACONDITION" precision="22" scale="0" />
+        </property>
+        <property name="mrprojector" type="java.lang.Integer">
+            <column name="MRPROJECTOR" precision="22" scale="0" not-null="true" />
+        </property>
+        <set name="usersRooms" table="USERS_ROOM" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MRID" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.dlnu.pojo.UsersRoom" />
+        </set>
+        <set name="meetings" table="MEETING" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MRID" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.dlnu.pojo.Meeting" />
+        </set>
+    </class>
+</hibernate-mapping>

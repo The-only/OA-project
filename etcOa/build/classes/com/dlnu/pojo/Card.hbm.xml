@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-6-26 13:39:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dlnu.pojo.Card" table="CARD" schema="OA">
+        <id name="cardid" type="java.lang.Integer">
+            <column name="CARDID" precision="22" scale="0" />
+            <generator class="sequence">
+            <param name="sequence">sq1</param>
+            </generator>
+        </id>
+        <many-to-one name="cardfloder" class="com.dlnu.pojo.Cardfloder" fetch="select" lazy="false">
+            <column name="CID" precision="22" scale="0" />
+        </many-to-one>
+        <property name="cname" type="string">
+            <column name="CNAME" length="40" />
+        </property>
+        <property name="dept" type="string">
+            <column name="DEPT" length="40" />
+        </property>
+        <property name="position" type="string">
+            <column name="POSITION" length="20" />
+        </property>
+        <property name="tel" type="string">
+            <column name="TEL" length="16" not-null="true" />
+        </property>
+        <property name="phone" type="string">
+            <column name="PHONE" length="20" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="40" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,65 @@
+
+.center{
+	width: 1000px;
+	margin: 10px auto 0 auto;
+}
+#myCarousel img{
+	min-width: 100%;
+	height: 500px;
+}
+.jumbotron{
+	font-size: 14px;
+}
+.footer{
+	line-height: 40px;
+	height: 40px;
+	position: fixed;
+	bottom: 0;
+	width: 760px;
+	left: 50%;
+	margin-left: -380px;
+}
+/*登陆style*/
+.xlogin{
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.xlogin > .radio{
+	margin-right: 20px;
+}
+.footer-links li{
+	display: inline-block;
+}
+/*查询style*/
+.align{
+	line-height: 34px;
+	margin: 0;
+}
+/*分页style*/
+.skip{
+	margin: 0!important;
+	padding: 0!important;
+	height: 17px!important;
+}
+/*增加会议*/
+.addmeeting .add{
+	margin-bottom: 20px;
+}
+/*会议室展示*/
+.time{
+	margin-top: 20px;
+}
+/* 主体部分布局 */
+/* .m_left{
+	float: left;
+	width: 200px;
+}
+.m_right{`
+	margin-left: 200px;
+} */
+/*会议宽度  */
+@media(min-width: 1200px) {
+    .container {
+        width:1027px!important;
+    }
+}

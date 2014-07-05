@@ -1,0 +1,26 @@
+.info_main{
+
+margin: 0px auto;
+margin-top: 46px;
+}
+
+p.general_title {
+padding-bottom: 0px;
+background: url(../images/line_6.gif) repeat-x 0px 11px;
+font-size: 19px;
+color: #1a1a1a !important;
+text-transform: uppercase;
+text-align: center;
+line-height: normal !important;
+}
+p.general_title span {
+padding: 0px 8px;
+display: inline-block;
+background-color: #ffffff;
+}
+
+.separator {
+
+clear: both;
+overflow: hidden;
+}

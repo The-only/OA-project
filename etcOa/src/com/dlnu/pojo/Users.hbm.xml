@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-6-26 13:39:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.dlnu.pojo.Users" table="USERS" schema="OA">
+		<id name="userid" type="java.lang.Integer">
+			<column name="USERID" precision="22" scale="0" />
+			<generator class="sequence">
+				<param name="sequence">sq13</param>
+			</generator>
+		</id>
+		<many-to-one name="department" class="com.dlnu.pojo.Department"
+			fetch="select" lazy="false">
+			<column name="DID" precision="22" scale="0" />
+		</many-to-one>
+		<many-to-one name="postion" class="com.dlnu.pojo.Postion"
+			fetch="select" lazy="false">
+			<column name="POSTID" precision="22" scale="0" />
+		</many-to-one>
+		<property name="uname" type="string">
+			<column name="UNAME" length="20" not-null="true" />
+		</property>
+		<property name="upass" type="string">
+			<column name="UPASS" length="20" not-null="true" />
+		</property>
+		<property name="name" type="string">
+			<column name="NAME" length="20" />
+		</property>
+		<property name="sex" type="string">
+			<column name="SEX" length="4" />
+		</property>
+		<property name="age" type="java.lang.Byte">
+			<column name="AGE" precision="2" scale="0" />
+		</property>
+		<property name="email" type="string">
+			<column name="EMAIL" length="40" not-null="true" />
+		</property>
+		<property name="tel" type="string">
+			<column name="TEL" length="30" not-null="true" />
+		</property>
+		<property name="phone" type="string">
+			<column name="PHONE" length="20" />
+		</property>
+		<property name="address" type="string">
+			<column name="ADDRESS" length="200" not-null="true" />
+		</property>
+		<property name="interest" type="string">
+			<column name="INTEREST" length="100" not-null="true" />
+		</property>
+		<property name="introduce" type="string">
+			<column name="INTRODUCE" length="1024" not-null="true" />
+		</property>
+		<set name="usersMessagesForReceiveid" table="USERS_MESSAGE"
+			cascade="all" inverse="true" lazy="false" fetch="select">
+			<key>
+				<column name="RECEIVEID" precision="22" scale="0" />
+			</key>
+			<one-to-many class="com.dlnu.pojo.UsersMessage" />
+		</set>
+		<set name="userSchedulesForActorid" table="USER_SCHEDULE" inverse="true"
+			cascade="all" lazy="false" fetch="select">
+			<key>
+				<column name="ACTORID" precision="22" scale="0" />
+			</key>
+			<one-to-many class="com.dlnu.pojo.UserSchedule" />
+		</set>
+		<set name="usersRoles" table="USERS_ROLE" inverse="true" lazy="false"
+			cascade="all" fetch="select">
+			<key>
+				<column name="USERID" precision="22" scale="0" not-null="true" />
+			</key>
+			<one-to-many class="com.dlnu.pojo.UsersRole" />
+		</set>
+		<set name="userSchedulesForPlanid" table="USER_SCHEDULE" inverse="true"
+			cascade="all" lazy="false" fetch="select">
+			<key>
+				<column name="PLANID" precision="22" scale="0" not-null="true" />
+			</key>
+			<one-to-many class="com.dlnu.pojo.UserSchedule" />
+		</set>
+		<set name="cardfloders" table="CARDFLODER" inverse="true" lazy="false"
+			cascade="all" fetch="select">
+			<key>
+				<column name="USERID" precision="22" scale="0" />
+			</key>
+			<one-to-many class="com.dlnu.pojo.Cardfloder" />
+		</set>
+		<set name="usersRooms" table="USERS_ROOM" inverse="true" lazy="false"
+			cascade="all" fetch="select">
+			<key>
+				<column name="USERID" precision="22" scale="0" not-null="true" />
+			</key>
+			<one-to-many class="com.dlnu.pojo.UsersRoom" />
+		</set>
+		<set name="usersMessagesForSendid" table="USERS_MESSAGE" inverse="true"
+			cascade="all" lazy="false" fetch="select">
+			<key>
+				<column name="SENDID" precision="22" scale="0" not-null="true" />
+			</key>
+			<one-to-many class="com.dlnu.pojo.UsersMessage" />
+		</set>
+		<set name="floders" table="FLODER" inverse="true" lazy="false"
+			cascade="all" fetch="select">
+			<key>
+				<column name="USERID" precision="22" scale="0" />
+			</key>
+			<one-to-many class="com.dlnu.pojo.Floder" />
+		</set>
+		<set name="userMeetings" table="USER_MEETING" inverse="true" lazy="false"
+			cascade="all" fetch="select">
+			<key>
+				<column name="USERID" precision="22" scale="0" not-null="true" />
+			</key>
+			<one-to-many class="com.dlnu.pojo.UserMeeting" />
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "./struts-2.0.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.devMode" value="true" />
+	<!-- 引入模块的配置文件 -->
+	<include file="system.xml"></include>
+	<include file="meeting.xml"></include>
+	<include file="office.xml"></include>
+
+	<package name="oa" namespace="/" extends="json-default,struts-default">
+		<action name="login" class="loginAction" method="login">
+			<result name="staff">/staff/staff.jsp</result>
+			<result name="leader">/leader/leader.jsp</result>
+			<result name="system">/admin/admin.jsp</result>
+			<result name="fail">/fail.jsp</result>
+		</action>
+		<action name="exit" class="loginAction" method="exit">
+			<result>index.jsp</result>
+		</action>
+		<action name="addWork" class="workPlanAction" method="addWork">
+			<result type="redirectAction">
+				<param name="actionName">showWork</param>
+			</result>
+		</action>
+		<action name="showWork" class="workPlanAction" method="showWork">
+			<result>staff/workplane/selectWorkList.jsp</result>
+		</action>
+		<action name="showDept" class="departAction" method="showDept">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="getDepts" class="departAction" method="getDepts">
+		</action>
+
+
+
+
+		<action name="showDepartments" class="departAction" method="showDepartments">
+			<result>admin/deptManage/showDept.jsp</result>
+		</action>
+		<action name="addDepartments" class="departAction" method="addDepartments">
+			<result type="redirectAction">
+				<param name="actionName">showDepartments</param>
+			</result>
+		</action>
+		<action name="toUpdateDepartments" class="departAction" method="toUpdateDepartments">
+			<result>admin/deptManage/updateDept.jsp</result>
+		</action>
+		<action name="updateDepartments" class="departAction" method="updateDepartments">
+			<result type="redirectAction">
+				<param name="actionName">showDepartments</param>
+			</result>
+		</action>
+		<action name="deleteDeptment" class="departAction" method="deleteDeptment">
+			<result type="redirectAction">
+				<param name="actionName">showDepartments</param>
+			</result>
+		</action>
+		<action name="getDeptPersons" class="departAction" method="getDeptPersons">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<action name="listwork" class="unCompleteWorkAction" method="listwork">
+			<result>staff/uncompleteWork/listWork.jsp</result>
+		</action>
+		<action name="undolistwork" class="unCompleteWorkAction"
+			method="undolistwork">
+			<result>staff/uncompleteWork/uncompleteWork.jsp</result>
+		</action>
+		<action name="deleteUS" class="unCompleteWorkAction" method="deleteUS">
+			<result type="redirectAction">
+				<param name="actionName">listwork</param>
+			</result>
+		</action>
+		<action name="excel" class="workPlanAction" method="excel">
+			<result type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">filename="${fileName}"</param>
+				<param name="inputName">excelStream</param>
+			</result>
+		</action>
+		<action name="download" class="fileAction" method="download">
+			<result type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="contentDisposition">filename="${filename}"</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<action name="showfile" class="fileAction" method="showfile">
+			<result>/staff/personalDocument/personalDocument.jsp</result>
+		</action>
+		<action name="deletefile" class="fileAction" method="deletefile">
+			<result type="redirectAction">
+				<param name="actionName">showfile</param>
+			</result>
+		</action>
+		<action name="uploadfile" class="fileAction" method="uploadfile">
+			<result type="redirectAction">
+				<param name="actionName">showfile</param>
+			</result>
+		</action>
+	</package>
+
+	<package name="role" namespace="/" extends="struts-default">
+		<action name="getRole" class="roleAction" method="getRole">
+			<result>/admin/roleManage/showRole.jsp</result>
+		</action>
+		<action name="toSetRole" class="roleAction" method="toSetRole">
+			<result name="success">/admin/roleManage/setRole.jsp</result>
+		</action>
+		<action name="setRole" class="roleAction" method="setRole">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getRole</param>
+			</result>
+		</action>
+	</package>
+	
+	
+	<!-- jeakon -->
+	<package name="jeakon" namespace="/" extends="struts-default">
+
+		<!-- 领导的action -->
+		<action name="sendCard_leader" class="cardAction" method="sendCards">
+			<result name="success">/leader/success.jsp</result>
+		</action>
+		<action name="getCardfloders_leader" class="cardAction" method="getCardfloders">
+			<result name="success">/leader/card/cardClassify.jsp</result>
+		</action>
+		<action name="addCardfloder_leader" class="cardAction" method="addCardfloder">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getCardfloders_leader</param>
+			</result>
+		</action>
+		<action name="deleteCardfloder_leader" class="cardAction"
+			method="deleteCardfloder">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getCardfloders_leader</param>
+			</result>
+		</action>
+		<action name="getUserCard_leader" class="cardAction" method="getUserCard">
+			<result name="success">/leader/card/myCard.jsp</result>
+		</action>
+		<action name="updateCard_leader" class="cardAction" method="updateCard">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getUserCard_leader</param>
+			</result>
+		</action>
+		<action name="getCards_leader" class="cardAction" method="getCards">
+			<result name="success">/leader/card/detail.jsp</result>
+		</action>
+		<action name="getCard_leader" class="cardAction" method="getCard">
+			<result name="success">/leader/card/detailOther.jsp</result>
+		</action>
+		<action name="deleteCard_leader" class="cardAction" method="deleteCard">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getCards_leader</param>
+			</result>
+		</action>
+		<action name="getCardsByName_leader" class="cardAction" method="getCardsByName">
+			<result name="success">/leader/card/detail.jsp</result>
+		</action>
+		<action name="getCAList_leader" class="companyAddressListAction"
+			method="getCAList">
+			<result name="success">/leader/companyAddressList/companyAddressShow.jsp
+			</result>
+		</action>
+		<action name="nMessage_leader" class="messageAction" method="nMessage">
+			<result name="success">/leader/messageOnline/newMessage.jsp</result>
+		</action>
+		<action name="newMessage_leader" class="messageAction" method="newMessage">
+			<result name="success">/leader/success.jsp</result>
+		</action>
+		<action name="personalInfoSelf_leader" class="personalAction"
+			method="personalInfoSelf">
+			<result name="success">/leader/companySearch/personalInfoSelf.jsp
+			</result>
+		</action>
+		<action name="updatePersonalInfoSelf_leader" class="personalAction"
+			method="updatePersonalInfoSelf">
+			<result name="success" type="redirectAction">
+				<param name="actionName">personalInfoSelf_leader</param>
+			</result>
+		</action>
+		<action name="personalInfoOthersAll_leader" class="personalAction"
+			method="getOthersInfo">
+			<result name="success">/leader/companySearch/personalInfoOthersAll.jsp
+			</result>
+		</action>
+		<action name="personalInfoOthersDetail_leader" class="personalAction"
+			method="personalInfoOthersDetail">
+			<result name="success">/leader/companySearch/personalInfoOthersDetail.jsp
+			</result>
+		</action>
+		<action name="getOthersInfo_leader" class="personalAction"
+			method="getOthersInfo">
+			<result name="success">/leader/companySearch/personalInfoOthersAll.jsp
+			</result>
+		</action>
+		<!-- 查询分页 -->
+		<action name="searchCAList_leader" class="companyAddressListAction"
+			method="searchCAList">
+			<result name="success">/leader/companyAddressList/companyAddressShow.jsp
+			</result>
+		</action>
+		<action name="draftMessage_leader" class="messageAction"
+			method="draftMessages">
+			<result name="success">/leader/messageOnline/draftMessage.jsp</result>
+		</action>
+		<action name="draftMessagesByReceive_leader" class="messageAction"
+			method="draftMessagesByReceive">
+			<result name="success">/leader/messageOnline/draftMessage.jsp</result>
+		</action>
+		<action name="readMessagesBySend_leader" class="messageAction"
+			method="readMessagesBySend">
+			<result name="success">/leader/messageOnline/readMessage.jsp</result>
+		</action>
+		<action name="unreadMessagesBySend_leader" class="messageAction"
+			method="unreadMessagesBySend">
+			<result name="success">/leader/messageOnline/unreadMessage.jsp</result>
+		</action>
+		<action name="sendMessagesByReceive_leader" class="messageAction"
+			method="sendMessagesByReceive">
+			<result name="success">/leader/messageOnline/sendMessage.jsp</result>
+		</action>
+		<action name="editMessage_leader" class="messageAction" method="editMessage">
+			<result name="success">/leader/messageOnline/editMessage.jsp</result>
+		</action>
+		<action name="updateMessage_leader" class="messageAction"
+			method="updateMessage">
+			<result name="success">/leader/success.jsp</result>
+		</action>
+		<action name="deleteMessage_leader" class="messageAction"
+			method="deleteMessage">
+			<result name="success">/leader/success.jsp</result>
+		</action>
+		<action name="unreadMessage_leader" class="messageAction"
+			method="unreadMessage">
+			<result name="success">/leader/messageOnline/unreadMessage.jsp</result>
+		</action>
+		<action name="getUnreadMessage_leader" class="messageAction"
+			method="getMessage">
+			<result name="success">/leader/messageOnline/getUnreadMessage.jsp
+			</result>
+		</action>
+		<action name="getReadMessage_leader" class="messageAction"
+			method="getMessage">
+			<result name="success">/leader/messageOnline/getReadMessage.jsp</result>
+		</action>
+		<action name="readMessage_leader" class="messageAction" method="readMessage">
+			<result name="success">/leader/messageOnline/readMessage.jsp</result>
+		</action>
+		<action name="sendMessage_leader" class="messageAction" method="sendMessage">
+			<result name="success">/leader/messageOnline/sendMessage.jsp</result>
+		</action>
+		<action name="getSendMessage_leader" class="messageAction"
+			method="getMessage">
+			<result name="success">/leader/messageOnline/getSendMessage.jsp</result>
+		</action>
+		<action name="getIndex_leader" class="cardAction" method="getIndex">
+			<result name="success">leader/leader.jsp</result>
+		</action>
+		<!-- 领导的action -->
+
+
+		<!-- 职员的action -->
+		<action name="sendCard_staff" class="cardAction" method="sendCards">
+			<result name="success">/staff/success.jsp</result>
+		</action>
+		<action name="getCardfloders_staff" class="cardAction" method="getCardfloders">
+			<result name="success">/staff/card/cardClassify.jsp</result>
+		</action>
+		<action name="addCardfloder_staff" class="cardAction" method="addCardfloder">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getCardfloders_staff</param>
+			</result>
+		</action>
+		<action name="deleteCardfloder_staff" class="cardAction"
+			method="deleteCardfloder">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getCardfloders_staff</param>
+			</result>
+		</action>
+		<action name="getUserCard_staff" class="cardAction" method="getUserCard">
+			<result name="success">/staff/card/myCard.jsp</result>
+		</action>
+		<action name="updateCard_staff" class="cardAction" method="updateCard">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getUserCard_staff</param>
+			</result>
+		</action>
+		<action name="getCards_staff" class="cardAction" method="getCards">
+			<result name="success">/staff/card/detail.jsp</result>
+		</action>
+		<action name="getCard_staff" class="cardAction" method="getCard">
+			<result name="success">/staff/card/detailOther.jsp</result>
+		</action>
+		<action name="getCardsByName_staff" class="cardAction" method="getCardsByName">
+			<result name="success">/staff/card/detail.jsp</result>
+		</action>
+		<action name="deleteCard_staff" class="cardAction" method="deleteCard">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getCards_staff</param>
+			</result>
+		</action>
+		<action name="getCAList_staff" class="companyAddressListAction"
+			method="getCAList">
+			<result name="success">/staff/companyAddressList/companyAddressShow.jsp
+			</result>
+		</action>
+		<action name="nMessage_staff" class="messageAction" method="nMessage">
+			<result name="success">/staff/messageOnline/newMessage.jsp</result>
+		</action>
+		<action name="newMessage_staff" class="messageAction" method="newMessage">
+			<result name="success">/staff/success.jsp</result>
+		</action>
+		<action name="personalInfoSelf_staff" class="personalAction"
+			method="personalInfoSelf">
+			<result name="success">/staff/companySearch/personalInfoSelf.jsp
+			</result>
+		</action>
+		<action name="updatePersonalInfoSelf_staff" class="personalAction"
+			method="updatePersonalInfoSelf">
+			<result name="success" type="redirectAction">
+				<param name="actionName">personalInfoSelf_staff</param>
+			</result>
+		</action>
+		<action name="personalInfoOthersAll_staff" class="personalAction"
+			method="getOthersInfo">
+			<result name="success">/staff/companySearch/personalInfoOthersAll.jsp
+			</result>
+		</action>
+		<action name="personalInfoOthersDetail_staff" class="personalAction"
+			method="personalInfoOthersDetail">
+			<result name="success">/staff/companySearch/personalInfoOthersDetail.jsp
+			</result>
+		</action>
+		<action name="getOthersInfo_staff" class="personalAction"
+			method="getOthersInfo">
+			<result name="success">/staff/companySearch/personalInfoOthersAll.jsp
+			</result>
+		</action>
+		<!-- 查询分页 -->
+		<action name="searchCAList_staff" class="companyAddressListAction"
+			method="searchCAList">
+			<result name="success">/staff/companySearch/personalInfoOthersAll.jsp
+			</result>
+		</action>
+		<action name="draftMessage_staff" class="messageAction" method="draftMessages">
+			<result name="success">/staff/messageOnline/draftMessage.jsp</result>
+		</action>
+		<action name="draftMessagesByReceive_staff" class="messageAction"
+			method="draftMessagesByReceive">
+			<result name="success">/staff/messageOnline/draftMessage.jsp</result>
+		</action>
+		<action name="readMessagesBySend_staff" class="messageAction"
+			method="readMessagesBySend">
+			<result name="success">/staff/messageOnline/readMessage.jsp</result>
+		</action>
+		<action name="unreadMessagesBySend_staff" class="messageAction"
+			method="unreadMessagesBySend">
+			<result name="success">/staff/messageOnline/unreadMessage.jsp</result>
+		</action>
+		<action name="sendMessagesByReceive_staff" class="messageAction"
+			method="sendMessagesByReceive">
+			<result name="success">/staff/messageOnline/sendMessage.jsp</result>
+		</action>
+		<action name="editMessage_staff" class="messageAction" method="editMessage">
+			<result name="success">/staff/messageOnline/editMessage.jsp</result>
+		</action>
+		<action name="updateMessage_staff" class="messageAction"
+			method="updateMessage">
+			<result name="success">/staff/success.jsp</result>
+		</action>
+		<action name="deleteMessage_staff" class="messageAction"
+			method="deleteMessage">
+			<result name="success">/staff/success.jsp</result>
+		</action>
+		<action name="unreadMessage_staff" class="messageAction"
+			method="unreadMessage">
+			<result name="success">/staff/messageOnline/unreadMessage.jsp</result>
+		</action>
+		<action name="getUnreadMessage_staff" class="messageAction"
+			method="getMessage">
+			<result name="success">/staff/messageOnline/getUnreadMessage.jsp
+			</result>
+		</action>
+		<action name="getReadMessage_staff" class="messageAction"
+			method="getMessage">
+			<result name="success">/staff/messageOnline/getReadMessage.jsp</result>
+		</action>
+		<action name="readMessage_staff" class="messageAction" method="readMessage">
+			<result name="success">/staff/messageOnline/readMessage.jsp</result>
+		</action>
+		<action name="sendMessage_staff" class="messageAction" method="sendMessage">
+			<result name="success">/staff/messageOnline/sendMessage.jsp</result>
+		</action>
+		<action name="getSendMessage_staff" class="messageAction"
+			method="getMessage">
+			<result name="success">/staff/messageOnline/getSendMessage.jsp</result>
+		</action>
+		<action name="getIndex_staff" class="cardAction" method="getIndex">
+			<result name="success">staff/staff.jsp</result>
+		</action>
+		<!-- 职员的acion -->
+
+
+		<action name="getExcel" class="companyAddressListAction" method="excel">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">filename="excel.xls"</param>
+				<param name="inputName">vo.excelStream</param>
+			</result>
+		</action>
+
+	</package>
+	<!-- jeakon -->
+</struts>

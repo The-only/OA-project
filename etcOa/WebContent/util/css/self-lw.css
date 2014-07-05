@@ -1,0 +1,61 @@
+/*导入excel按钮*/
+.addwork{
+margin-left: 2em;
+}
+
+/*新的留言按钮*/
+.message-button{
+	margin-right: 5em;
+}
+
+/*所有a的颜色*/
+a{
+	color: #428bca;
+}
+
+/*li的前面的点*/
+li{
+	list-style-type:none;
+}
+
+/*hover的时候下划线*/
+a:hover{
+	text-decoration:none;
+}
+
+/*导航*/
+.title{
+	border:1px solid #e5e5e5;
+	margin-bottom: 0.1em;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+/*导航*/
+.child-ul>ul>li>a{
+	font-size: 12px;
+	color: #000000;
+	padding-left: 4em;
+	background-color: #e5e5e5;
+	border:1px solid #e5e5e5;
+}
+
+/*导航*/
+#left-nav > li > a {
+padding: 11px 15px;
+}
+
+.top{
+	margin-top: 60px;
+	margin-bottom: 40px;
+	margin-left: 10px;
+}
+
+/*模态框的活动内容*/
+#handinput{
+	margin-bottom: 1em;
+}
+
+#person_add{
+	margin: 1em;
+}

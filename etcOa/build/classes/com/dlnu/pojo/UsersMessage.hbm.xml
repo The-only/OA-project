@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-6-26 13:39:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dlnu.pojo.UsersMessage" table="USERS_MESSAGE" schema="OA">
+        <id name="umessid" type="java.lang.Integer">
+            <column name="UMESSID" precision="22" scale="0" />
+            <generator class="sequence">
+            <param name="sequence">sq15</param>
+            </generator>
+        </id>
+        <many-to-one name="message" class="com.dlnu.pojo.Message" fetch="select" lazy="false">
+            <column name="MESSID" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usersByReceiveid" class="com.dlnu.pojo.Users" fetch="select" lazy="false">
+            <column name="RECEIVEID" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="usersBySendid" class="com.dlnu.pojo.Users" fetch="select" lazy="false">
+            <column name="SENDID" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="issend" type="string">
+            <column name="ISSEND" length="2" />
+        </property>
+        <property name="isreceive" type="string">
+            <column name="ISRECEIVE" length="2" />
+        </property>
+        <property name="isdelete" type="string">
+            <column name="ISDELETE" length="2" />
+        </property>
+    </class>
+</hibernate-mapping>

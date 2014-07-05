@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-6-26 13:39:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dlnu.pojo.Postion" table="POSTION" schema="OA">
+        <id name="postid" type="java.lang.Integer">
+            <column name="POSTID" precision="22" scale="0" />
+            <generator class="sequence">
+            <param name="sequence">sq9</param>
+            </generator>
+        </id>
+        <property name="postname" type="string">
+            <column name="POSTNAME" length="40" />
+        </property>
+        <set name="userses" table="USERS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="POSTID" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.dlnu.pojo.Users" />
+        </set>
+    </class>
+</hibernate-mapping>

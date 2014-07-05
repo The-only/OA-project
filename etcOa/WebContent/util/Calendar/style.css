@@ -1,0 +1,110 @@
+@charset 'utf-8';
+
+/* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
+-------------------------------------------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	background: transparent;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+body {
+	line-height: 1;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}
+ul {
+	list-style: none;
+}
+li {
+	font-size:0px;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a img {
+	border: none;
+}
+
+aside, article, footer, header, nav, section {display:block;}
+
+/* defaults end */
+html, body {height:100%;}
+body {}
+body, a {font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#737373;}
+	
+/* fonts */
+h1, h2, h3, h4, h5, h6 {padding-bottom:20px; font-family:Arial, Helvetica, sans-serif; color:#1a1a1a; font-weight:normal; line-height:1em;}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {font-family:Arial, Helvetica, sans-serif; color:#1a1a1a; font-weight:normal; line-height:1em;}
+h1, h1 a {font-size:22px;}
+h2, h2 a {font-size:19px;}
+h3, h3 a {font-size:15px; font-weight:bold;}
+h4, h4 a {font-size:14px; font-weight:bold;}
+h5, h5 a {padding-bottom:16px; font-size:13px; font-weight:bold;}
+h6, h6 a {padding-bottom:13px; font-size:12px; font-weight:bold;}
+
+
+
+
+
+
+
+.block_calendar h4 {padding-bottom:18px;}
+.block_calendar .line_2 {margin-top:20px;}
+.block_calendar .datepickerNotInMonth a, .block_calendar .datepickerNotInMonth span {color:#cccccc;}
+.block_calendar .datepickerBorderT,
+.block_calendar .datepickerBorderB,
+.block_calendar .datepickerBorderL,
+.block_calendar .datepickerBorderR,
+.block_calendar .datepickerBorderTL,
+.block_calendar .datepickerBorderTR,
+.block_calendar .datepickerBorderBL,
+.block_calendar .datepickerBorderBR {display:none;}
+.block_calendar .datepickerContainer {width:auto !important; left:0px; top:0px;}
+
+.block_calendar div.datepicker table table th {vertical-align:top;}
+.block_calendar div.datepicker table table td {vertical-align:top; background-color:#ffffff; color:#676767; text-align:center;}
+.block_calendar div.datepicker table table td a {width:124px; height:33px; line-height:19px; display:block; color:#676767; border-left:1px solid #e5e5e5; border-bottom:1px solid #e5e5e5;}
+.block_calendar div.datepicker table table td:first-child a {width:124px;}
+.block_calendar div.datepicker table table td.last a {width:124px; border-right:1px solid #e5e5e5;}
+.block_calendar div.datepicker table table td a:hover span {height:32px; line-height:17px; display:block; background-color:#f5f5f5; border:1px solid #ffffff;}
+
+.block_calendar .datepickerDays tr:first-child a {border-top:1px solid #262626;}
+
+.block_calendar div.datepicker table table td.datepickerSelected span,
+.block_calendar div.datepicker table table td.datepickerSelected a:hover span
+{height:33px; line-height:17px; display:block; background-color:#f24024; border:1px solid #ffffff; color:#ffffff;}
+
+.block_calendar .datepickerGoPrev {width:42px; height:33px; background:url(images/bg_month.jpg) repeat-x;}
+.block_calendar .datepickerGoPrev a {width:41px; height:33px; display:block; font-size:0px; line-height:0px;}
+.block_calendar .datepickerGoPrev span {width:40px; height:32px; display:block; background:url(images/arrow_7.png) no-repeat 10px 12px; border-left:1px solid #e6e6e6; text-indent:-9000px;}
+
+.block_calendar .datepickerMonth {height:33px; background:url(images/bg_month.jpg) repeat-x; text-align:center;}
+.block_calendar .datepickerMonth a {font-size:14px; color:#f24024; font-weight:bold; line-height:32px;}
+
+.block_calendar .datepickerGoNext {width:43px; height:33px; background:url(images/bg_month.jpg) repeat-x;}
+.block_calendar .datepickerGoNext a {width:43px; height:33px; display:block; font-size:0px; line-height:0px;}
+.block_calendar .datepickerGoNext span {width:125px; height:32px; display:block; background:url(images/arrow_8.png) no-repeat 27px 12px; border-right:1px solid #e6e6e6; text-indent:-9000px;}
+
+.block_calendar .datepickerDoW {}
+.block_calendar .datepickerDoW th {background-color:#474747; color:#ededed; text-align:center;}
+.block_calendar .datepickerDoW th span {width:42px; height:21px; line-height:21px; display:block; border-left:1px solid #666666; border-top:1px solid #262626;}
+.block_calendar .datepickerDoW th:first-child span {width:41px; border-left:1px solid #262626;}
+.block_calendar .datepickerDoW th.last span {width:124px; border-right:1px solid #262626;}
+
+
+

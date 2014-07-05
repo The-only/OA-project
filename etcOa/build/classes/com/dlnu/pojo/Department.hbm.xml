@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-6-26 13:39:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dlnu.pojo.Department" table="DEPARTMENT" schema="OA">
+        <id name="did" type="java.lang.Integer">
+            <column name="DID" precision="22" scale="0" />
+            <generator class="sequence">
+            <param name="sequence">sq3</param>
+            </generator>
+        </id>
+        <property name="dname" type="string">
+            <column name="DNAME" length="40" not-null="true" />
+        </property>
+        <property name="phone" type="string">
+            <column name="PHONE" length="20" not-null="true" />
+        </property>
+        <property name="function" type="string">
+            <column name="FUNCTION" length="1024" not-null="true" />
+        </property>
+        <set name="userses" table="USERS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="DID" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.dlnu.pojo.Users" />
+        </set>
+    </class>
+</hibernate-mapping>

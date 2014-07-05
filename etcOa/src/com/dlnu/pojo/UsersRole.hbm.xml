@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-6-26 13:39:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dlnu.pojo.UsersRole" table="USERS_ROLE" schema="OA">
+        <id name="uroleid" type="java.lang.Integer">
+            <column name="UROLEID" precision="22" scale="0" />
+           <generator class="sequence">
+            <param name="sequence">sq16</param>
+            </generator>
+        </id>
+        <many-to-one name="users" class="com.dlnu.pojo.Users" fetch="select" lazy="false">
+            <column name="USERID" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="role" class="com.dlnu.pojo.Role" fetch="select" lazy="false">
+            <column name="ROLEID" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-6-26 13:39:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.dlnu.pojo.Message" table="MESSAGE" schema="OA">
+        <id name="messid" type="java.lang.Integer">
+            <column name="MESSID" precision="22" scale="0" />
+           <generator class="sequence">
+            <param name="sequence">sq7</param>
+            </generator>
+        </id>
+        <property name="title" type="string">
+            <column name="TITLE" length="40" />
+        </property>
+        <property name="content" type="string">
+            <column name="CONTENT" length="1024" />
+        </property>
+        <property name="time" type="date">
+            <column name="TIME" length="7" />
+        </property>
+        <set name="usersMessages" table="USERS_MESSAGE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MESSID" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.dlnu.pojo.UsersMessage" />
+        </set>
+    </class>
+</hibernate-mapping>

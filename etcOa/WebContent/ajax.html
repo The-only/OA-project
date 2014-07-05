@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script type="text/javascript" src="util/lib/jquery/jquery.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#b01").click(function() {
+			htmlobj = $.ajax({
+				url : "http://localhost:8080/etcOa/getDeptPersons.action",
+				dateType : "json",
+				success : function(json) {
+					var arr = $.parseJSON(json);
+					document.getElementById("sel").options.length=0;
+					document.getElementById("sel").options.add(new Option("--请选择--",""));
+					//迭代数组
+					$.map(arr, function(item) {
+						document.getElementById("sel").options.add(new Option(item,item));
+					});
+				}
+			});
+
+		});
+	});
+</script>
+</head>
+<body>
+	<select name="vo.name" id="sel">
+	<option value="">--请选择--</option>
+	</select>
+	<button id="b01" type="button">改变内容</button>
+
+</body>
+
+</html>
